@@ -1,0 +1,39 @@
+[project]
+name = "fin"
+version = "0.1.0"
+description = "주식종목 리스트를 불러옵니다."
+authors = [
+    { name = "David Cho", email = "csi00700@gmail.com" }
+]
+dependencies = [
+    "pykrx>=1.0.45",
+    "bs4>=0.0.2",
+    "click>=8.1.7",
+    "aiohttp>=3.9.3",
+    "tqdm>=4.66.2",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[project.scripts]
+tickers = "fin:get_tickerlist"
+get_stockinfo_list = "fin:get_stockinfo_list"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "black>=24.2.0",
+    "autopep8>=2.0.4",
+    "autoflake>=2.3.0",
+    "isort>=5.13.2",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fin"]
